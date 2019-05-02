@@ -6,6 +6,62 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import TestScreen from '../screens/TestScreen';
+import TabBarTest from "../components/TabBarTest";
+
+const TestStack = createStackNavigator({
+    Test: TestScreen
+});
+
+TestStack.navigationOptions = {
+  tabBarLabel: 'Test',
+  tabBarIcon: ({ focused }) => (
+      <TabBarIcon
+          focused={focused}
+          name={
+            Platform.OS === 'ios'
+                ? `ios-information-circle${focused ? '' : '-outline'}`
+                : 'md-information-circle'
+          }
+      />
+  ),
+};
+
+const Test2Stack = createStackNavigator({
+  Test2: TestScreen
+});
+
+Test2Stack.navigationOptions = {
+  tabBarLabel: 'Test 2',
+  tabBarIcon: ({ focused }) => (
+      <TabBarIcon
+          focused={focused}
+          name={
+            Platform.OS === 'ios'
+                ? `ios-information-circle${focused ? '' : '-outline'}`
+                : 'md-information-circle'
+          }
+      />
+  ),
+};
+
+const Test3Stack = createStackNavigator({
+  Test3: TestScreen
+});
+
+Test2Stack.navigationOptions = {
+  tabBarLabel: 'Test 3',
+  tabBarIcon: ({ focused }) => (
+      <TabBarIcon
+          focused={focused}
+          name={
+            Platform.OS === 'ios'
+                ? `ios-information-circle${focused ? '' : '-outline'}`
+                : 'md-information-circle'
+          }
+      />
+  ),
+};
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -31,12 +87,6 @@ const LinksStack = createStackNavigator({
 
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
 };
 
 const SettingsStack = createStackNavigator({
@@ -45,16 +95,15 @@ const SettingsStack = createStackNavigator({
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
-  ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-});
+  TestStack,
+  Test2Stack,
+  Test3Stack
+},{
+  tabBarComponent: props => <TabBarTest {...props} />
+  });
